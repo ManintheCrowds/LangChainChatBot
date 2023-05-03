@@ -1,0 +1,19 @@
+5.2.2023
+  Model Selection Notes:
+Discovered only Models text-davinci-003 and text-davinci-002 work. The other Models are not available in API. 
+
+When Selecting gpt-3.5-turbo Andre receives this error:
+InvalidRequestError: This is a chat model and not supported in the v1/completions endpoint. Did you mean to use v1/chat/completions?
+
+When gpt-4 or gpt-4-32k
+InvalidRequestError: The model: `gpt-4-32k` does not exist
+
+So I didn't push these changes onto this program. The code that I had altered was
+
+#app framework
+model_selection = st.selectbox("Select the model", ["gpt-4", "gpt-4-32k", "gpt-3.5-turbo", "text-davinci-003", "text-davinci-002"])  # Add "other_model" with actual available models when needed.
+temperature_selection = st.slider("Set the temperature. Colder is Conservative & More Coherent. Hotter is Diverse & Less Coherent", min_value=0.0, max_value=1.0, value=0.9, step=0.1)
+
+# LLM // Modify the OpenAI object creation with the selected options
+llm = OpenAI(model=model_selection, temperature=temperature_selection)
+
