@@ -17,3 +17,4 @@ temperature_selection = st.slider("Set the temperature. Colder is Conservative &
 # LLM // Modify the OpenAI object creation with the selected options
 llm = OpenAI(model=model_selection, temperature=temperature_selection)
 
+Additionally I had to remove spaces within the title of the .py file. otherwise commands would fail. 
